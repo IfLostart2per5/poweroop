@@ -1,7 +1,7 @@
 package = "poweroop"
 version = "1.0-1"
 source = {
-   url = "..." -- We don't have one yet
+   url = "https://github.com/IfLostart2per5/poweroop"
 }
 description = {
    summary = "An simple, but powerful OO system.",
