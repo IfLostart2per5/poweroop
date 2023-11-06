@@ -339,13 +339,15 @@ local Interface = {
 -- função pra obter a superclasse atual. (se essa implementação não funcionar direito eu desisto desse sistema >:(, onde ja se viu, poo sem super?)
 function super(self)
   if self then
+    assert(type(self) == "table" and self.__class__, "ensure that you is giving a object.")
     return self.__class__.extends
   end
   local name, instance = debug.getlocal(2, 1)
   if not name then
     return nil
   end
-  if type(instance) ~= "table" or not instance.__class__ then
+  if type(instance) ~= "table" or not instance.__class__
+ then
     return nil
   end
   return instance.__class__.extends
