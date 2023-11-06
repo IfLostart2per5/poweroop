@@ -345,6 +345,9 @@ function super(self)
   if not name then
     return nil
   end
+  if type(instance) ~= "table" or not instance.__class__ then
+    return nil
+  end
   return instance.__class__.extends
 end
 
