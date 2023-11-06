@@ -1,4 +1,4 @@
-package = "neoop"
+package = "poweroop"
 version = "1.0-1"
 source = {
    url = "..." -- We don't have one yet
@@ -18,8 +18,7 @@ dependencies = {
 build = {
    type = "builtin",
    modules = {
-     undefinedobject = "src/undefinedobject.lua",
-     neoop = "src/neoop.lua",
-     Class = "src/Class.lua"
+     ["poweroop.undefinedobject"] = "src/undefinedobject.lua",
+     poweroop = "src/poweroop.lua",
    }
 }
