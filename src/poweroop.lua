@@ -168,7 +168,7 @@ local function _implements_inheritance(cls)
     -- obriga a classe atual a sobrescrever metodos abstratos da classe pai
     if rawget(cls.extends, "isabstract") and startswith(key, "abstract_") then
       if not cls.data["override_" .. string.sub(key, 10, string.len(key))] then
-        error("This class \"" .. cls.name .. "\" doesnt implements the abstract method \"" .. string.sub(key, 10, string.len(key)) .. "\" required by \"" .. spec.extends.name .. "\"")
+        error("This class \"" .. cls.name .. "\" doesnt implements the abstract method \"" .. string.sub(key, 10, string.len(key)) .. "\" required by \"" .. cls.extends.name .. "\"")
       end
       key = string.sub(key, 10, string.len(key))
     end 
@@ -243,7 +243,7 @@ function class(name, cls, disable_lazy)
       for k, vl in pairs(v.data) do
         if not cls.data[k] then
           if startswith(k, "default_") then
-            cls.data[string.sub(k, 9, string.lem(k))] = vl
+            cls.data[string.sub(k, 9, string.len(k))] = vl
           else
             error("This class doesnt implements the \"" .. tostring(k) .. "\" method!")
           end
@@ -326,7 +326,7 @@ function new(cls, ...)
 end
 
 -- classe abstrata que é a classe base pra interfaces
-local Interface = {
+Interface = {
   name = "Interface",
   isabstract = true,
   constructor = _defaultInit,
